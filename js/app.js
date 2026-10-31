@@ -144,7 +144,8 @@ function renderHome() {
     ${plan.type !== 'SAT' && !done ? bagToggle() : ''}
     ${done
       ? `<div class="done-box">✓ סיימת היום ${typeName(done.type)}${done.type !== 'SAT' ? (done.bag ? ' · עם שק' : ' · בלי שק') : ''}</div>
-         <p class="small muted">מחר: ${typeName(tomorrow.type)}${tomorrow.type !== 'SAT' ? ` · ${tomorrow.kicks} בעיטות לכל רגל` : ''}</p>`
+         <p class="small muted">מחר: <bdi>${typeName(tomorrow.type)}</bdi>${tomorrow.type !== 'SAT' ? ` · ${tomorrow.kicks} בעיטות לכל רגל` : ''}</p>
+         ${redoButton(done.type)}`
       : `<button class="btn primary huge" data-act="start-workout">התחל אימון היום</button>`}
   </section>`);
 
@@ -399,10 +400,17 @@ function renderDone() {
   return `<div class="pre done-screen">
     <div class="big-check">✓</div>
     <h1>כל הכבוד!</h1>
-    <p>${typeName(s.type)} נשמר${s.type !== 'SAT' ? ` · ${s.kicks} בעיטות לכל רגל · ${s.bag ? 'עם שק' : 'בלי שק'}` : ''}.</p>
+    <p>${typeName(s.type)} ${s.type === 'SAT' ? 'נשמרה' : 'נשמר'}${s.type !== 'SAT' ? ` · ${s.kicks} בעיטות לכל רגל · ${s.bag ? 'עם שק' : 'בלי שק'}` : ''}.</p>
     <p class="muted">רצף: ${daysText(streak(data, todayISO()))}</p>
     <a class="btn primary huge" href="#home">חזרה לבית</a>
+    ${redoButton(s.type)}
   </div>`;
+}
+
+// ביצוע חוזר של האימון של היום. בסיום הוא מחליף את הרישום של היום, ולא נספר כאימון נוסף.
+function redoButton(type) {
+  return `<button class="btn big wide" data-act="start-workout">בצע שוב את ה${type === 'SAT' ? 'מנוחה הפעילה' : `אימון (${type})`}</button>
+    <p class="small muted center">הביצוע החוזר יחליף את הרישום של היום.</p>`;
 }
 
 // ---------- מבחן פתיחה ומדידה ----------

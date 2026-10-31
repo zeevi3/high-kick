@@ -13,7 +13,6 @@ export const VIDEOS = {
   split: { url: 'https://www.instagram.com/reel/DbgwU6Ot1IP/', note: 'בשניות 7–14' },
   swings: { url: 'https://www.facebook.com/share/v/18gNXA7AVd/', note: 'בשנייה 15' },
   pancake: { url: 'https://www.facebook.com/share/v/18gNXA7AVd/', note: 'בשניות 19–28' },
-  figureFour: { url: 'https://www.facebook.com/share/v/18gNXA7AVd/', note: 'בשניות 33–37' },
   extra: { url: 'https://www.instagram.com/reel/DfCfkw2Nldw/', label: 'הדגמה נוספת' },
 };
 
@@ -210,7 +209,7 @@ export function buildWorkout(plan) {
       note: 'מתיחות קלות, בלי בעיטות.',
       exercises: [
         { name: 'פנקייק על כיסא', desc: 'ישיבה עם רגליים פשוקות, התכופפות קדימה.', videos: ['pancake'], rounds: FREE },
-        { name: 'מתיחת "ארבע" בעמידה ו"ארבע" הפוך', videos: ['figureFour'], rounds: FREE },
+        { name: 'מתיחת יונה', desc: 'רגל קדמית כפופה לרוחב לפני הגוף, רגל אחורית ישרה מאחור. מתכופפים קדימה מעל השוק הקדמית. לשני הצדדים.', rounds: FREE },
         { name: 'מעבר מסקוואט עמוק למתיחת אחוריים', rounds: FREE },
         { name: 'הנפות רגל קלות', videos: ['swings'], rounds: FREE },
         { ...splitExercise(plan, 'ספליט רגוע'), desc: 'ספליט רגוע, כמו בחלק 4 (ספליט צידי על הרצפה, או ישיבת פרפר). בלי בעיטות.' },
